@@ -15,7 +15,7 @@ are only tested, and which are not covered at all.
 | what | link | proves |
 |---|---|---|
 | Deployed contract | `0x247b313d0eD3C532B16c7E5f9eA760272361600F` on Mezo testnet | the escrow exists on a live chain |
-| Source match | Sourcify, `exact_match` for that address | the published source compiles to the deployed bytecode |
+| Source match | https://sourcify.dev/server/v2/contract/31611/0x247b313d0eD3C532B16c7E5f9eA760272361600F | Sourcify answers `exact_match` for creation and runtime, verified 2026-10-19T16:45:17Z |
 | Test suite | `90 tests`, 100% statement coverage in the repository | the behaviour is exercised, not just described |
 | Invariants | Lean 4 models under `formal/`, 12 theorems | the safety claims are machine-checked, not prose |
 | Submission | AKINDO "Build with MUSD and MEZO" round | the work was entered into the grant round |
@@ -29,8 +29,8 @@ curl -s -X POST "$MEZO_RPC" -H 'Content-Type: application/json' \
 # → non-empty bytecode means the address is a contract, not an EOA
 
 # source match
-curl -s "https://sourcify.dev/server/check-by-addresses?addresses=0x247b313d0eD3C532B16c7E5f9eA760272361600F&chainIds=31611"
-# → [{"status":"perfect"}] for an exact match
+curl -s "https://sourcify.dev/server/v2/contract/31611/0x247b313d0eD3C532B16c7E5f9eA760272361600F"
+# → {"match":"exact_match","chainId":"31611",...}
 ```
 
 ## Verdict
