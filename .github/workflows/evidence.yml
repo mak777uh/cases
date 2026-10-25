@@ -1,0 +1,16 @@
+name: evidence
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check that every piece of evidence is alive
+        run: python3 tools/check_evidence.py
