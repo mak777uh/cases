@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-25 · **Direction:** grant applications · **Status:** submitted, awaiting decisions
 
+**In one line:** Four grant applications in one week. This records exactly what we told each funder, so the promises can be checked later.
+
 ## Claim
 
 Four applications were submitted and their contents are recorded here, so that what we told each funder

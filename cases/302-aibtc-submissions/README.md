@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-25 · **Direction:** bounties and tasks · **Status:** applications in the pool, PoA blocked by the platform
 
+**In one line:** Three bounty applications on AIBTC, one of which turned out not to be ours. The mistake is written down, not hidden.
+
 ## Claim
 
 Three applications were submitted on AIBTC (sats rewards, no KYC): a Clarity-audit bounty (Kairan), an

@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-23 · **Direction:** on-chain verification · **Status:** deployed to testnet, submitted to a grant round
 
+**In one line:** An escrow contract that holds money until work is delivered. I deployed it to a test network, verified the source, tested it and wrote down twelve safety rules.
+
 ## Claim
 
 A milestone escrow in MUSD was written, tested and deployed to the Mezo testnet. It releases funds on

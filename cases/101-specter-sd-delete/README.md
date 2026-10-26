@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-26 · **Direction:** code contribution · **Status:** pull request open, not merged
 
+**In one line:** A hardware wallet's SD card could not delete files. I wrote the patch and its tests. The pull request is open.
+
 ## Claim
 
 The SD host of Specter DIY could only read files: `*.psbt` and exported wallet descriptors could be

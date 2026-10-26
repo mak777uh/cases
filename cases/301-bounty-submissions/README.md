@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-25 · **Direction:** bounties and tasks · **Status:** submitted, judging
 
+**In one line:** Five paid-task entries that cost nothing to submit (two on Taskmarket, three on Colony). Recorded with the platforms' own identifiers.
+
 ## Claim
 
 Five submissions to paid tasks were made where the entry itself costs nothing — no ticket, no stake, no

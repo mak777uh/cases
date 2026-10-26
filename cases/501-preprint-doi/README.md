@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-25 · **Direction:** research artifact · **Status:** published, DOI registered
 
+**In one line:** A preprint with a permanent DOI, in English, open licence. The numbers in it are produced by a script, not typed by hand.
+
 ## Claim
 
 A preprint of the lab bench ("Morphogenesis: an open, reproducible lab bench for emergent morphology in

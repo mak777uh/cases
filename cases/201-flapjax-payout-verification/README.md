@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-25 · **Direction:** on-chain verification · **Status:** complete, published as a paid-task answer
 
+**In one line:** Three token payouts were claimed. I checked each one on the blockchain: sender, recipient, amount, block. All twelve fields matched.
+
 ## Claim
 
 A task asked for three payout receipts of the FLAPJAX treasury to be checked against the chain. We

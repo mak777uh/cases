@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-23 · **Direction:** bug hunt (research claim) · **Status:** published in a public issue thread
 
+**In one line:** A paper's sentence compared with its formal (machine-checked) version. They do not say the same thing. Verdict: not confirmed.
+
 ## Claim
 
 A published claim (Run-129 / C4, bounded overshoot) was compared line by line against its Lean
