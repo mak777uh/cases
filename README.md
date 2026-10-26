@@ -1,63 +1,50 @@
-# Cases — evidence of work, one folder per direction
+# Cases
 
-This repository is the public record of what we actually did. It exists because a claim of work is not
-work: a reviewer, a grant committee, or a stranger six months from now should be able to check one file
-and see **what was done, what proved it, and what it did not prove**.
+Public record of verification work: what was done, what proves it, what the result was, and how to
+reproduce it.
 
-The rule is the same as in our research: **no number without its command, no claim without its link.**
+Most repositories show results. This one shows **the checking**: three transactions compared field by field,
+a patch against deployed code, a paper sentence compared with its formal version. Where the answer was
+"could not tell", it says so.
 
----
+## Three finished examples
 
-## What a case is
-
-One folder, one direction of work, one honest verdict. A case is not a portfolio of screenshots; it is
-an evidence file. If a claim in a case cannot be re-checked from a public URL, a transaction hash or a
-repository at a pinned commit, it does not belong in the case.
-
-```
-cases/NNN-short-slug/
-├── README.md      # claim → evidence → how to reproduce → verdict → limits
-├── evidence.md    # every link with what it proves, one per line
-└── artifacts/     # only what is needed to re-run: scripts, diffs, queries
-```
-
-## The five sections every case must have
-
-1. **Claim** — one paragraph, in plain language, no adjectives. What was done.
-2. **Evidence** — a table: link or tx hash, what it proves, how to check it. Every row must be re-checkable.
-3. **Reproduce** — the exact commands, in order, with the pinned version or commit.
-4. **Verdict** — `confirmed` / `not confirmed` / `could not tell`, and *which* of the three, never a vague "success".
-5. **Limits** — what this case does **not** establish. Written by us, before a reviewer writes it for us.
-
-A case that says "not confirmed, here is why" is worth more than one that overclaims. We publish both.
-
----
-
-## The directions we keep cases for
-
-| prefix | direction | what counts as a case |
+| case | what was checked | result |
 |---|---|---|
-| `1xx` | **Code contributions** | a pull request, a patch, a test suite — merged or open, with the diff and the CI result |
-| `2xx` | **On-chain verification** | a payout, a contract state, an invariant — checked against a public chain, with tx hashes |
-| `3xx` | **Bounties and tasks** | a submission to a paid task, with the platform's own receipt or queue position |
-| `4xx` | **Grant applications** | an application we submitted: what was claimed, what was published in support, the acknowledgement |
-| `5xx` | **Research artifacts** | a preprint, a dataset, a metrics table — with a DOI and the script that produced the numbers |
-| `6xx` | **Bug hunts** | a reproduced defect with steps, expected/actual, and a minimal patch — filed or not |
+| [201](cases/201-flapjax-payout-verification/) | Three FLAPJAX payouts: sender, recipient, amount, token, block | **confirmed**, 12 of 12 fields matched |
+| [101](cases/101-specter-sd-delete/) | A patch for Specter DIY (SD-card file deletion): does it apply, is the defect real | **confirmed** patch exists; acceptance unknown, PR is open |
+| [601](cases/601-statement-scope-review/) | A paper's claim compared with its Lean formalisation | **not confirmed**: the formal statement is stronger than the prose |
 
-## Rules that keep this honest
+More in [REGISTRY.md](REGISTRY.md) (generated from the folders, so it cannot drift).
 
-1. **Numbers come from a script, not from memory.** The metrics table in `REGISTRY.md` is generated;
-   if a count changes, the registry changes, not the prose.
-2. **A case is dated.** "As of 2026-10-26" — because counts grow and a stale number is a wrong number.
-3. **Third-party evidence is separated from our own artifacts.** A tx hash is evidence; our own README
-   saying the same thing is not.
-4. **Open pull requests are labelled as open.** An unmerged patch is real work, but it is not a merge,
-   and the case says so in the first line.
-5. **Nothing here is a promise of payment.** A case records work done, not money expected.
+## How a case is organised
+
+```
+cases/NNN-slug/
+├── README.md   # claim, evidence, reproduce, verdict, limits
+└── evidence.md # optional: links with what each one proves
+```
+
+Five short sections, always in the same order:
+
+1. **Claim**: what was done, plain sentences.
+2. **Evidence**: a table of links or tx hashes, and what each one proves.
+3. **Reproduce**: the exact commands.
+4. **Verdict**: `confirmed`, `not confirmed`, or `could not tell`.
+5. **Limits**: what this case does not establish.
+
+## Rules
+
+- Every claim needs a public link, a transaction hash, or a pinned commit. Otherwise it is an opinion.
+- Numbers come from a script and carry a date. A stale count is a wrong count.
+- "Not confirmed, here is why" counts the same as "confirmed". Both are published.
+
+## Repo description for the sidebar
+
+> Public record of verification work: claim, evidence, verdict (including "not confirmed"), and the commands to reproduce it.
 
 ---
 
-## Current registry
-
-See [`REGISTRY.md`](REGISTRY.md) — generated by `tools/regen_registry.py`, verified by
-`tools/check_evidence.py` (which fails on a dead link or an unreadable transaction).
+На русском: здесь лежат разборы, а не витрина. В каждой папке один разбор: что проверяли, чем
+подтверждается (хеш транзакции, коммит, ссылка), что получилось и как это повторить. Реестр в
+REGISTRY.md собирается из папок автоматически.
