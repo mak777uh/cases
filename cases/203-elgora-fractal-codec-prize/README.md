@@ -70,3 +70,7 @@ and compare the numbers. The codec sources and `results.csv` were delivered thro
 they are not stored in this repository, so the runnable artifact here is the **chain record**, not the code.
 
 **Status:** closed — paid.
+
+## Verdict
+
+**Confirmed** — the bounty was awarded to our wallet by all three independent Guardians, the contract published the settlement, and the prize (24.464537 USDC) was claimed and transferred on-chain; every step has a transaction hash.
