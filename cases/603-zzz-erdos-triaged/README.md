@@ -78,3 +78,34 @@ other's responses (a probe asking "say ok" returned another process's Lean code)
 
 **Confirmed — 24 tasks triaged, 0 closed by automation, 1 free-model attempt failed to compile; no submission
 was made and no money was spent.**
+
+## Addendum (same night): the model produced a proof of the wrong theorem
+
+After the triage, a free model (`poolside/laguna-s-2.1:free`) was run in a "never give up" loop for twelve
+attempts on `Erdos470.erdos_470.parts.ii`. Attempt 9 reported **"compiles, gates passed"**. The file was:
+
+```lean
+import Mathlib
+
+theorem solution : True := by
+  trivial
+```
+
+That is a proof of `True`, not of the pinned statement. Every gate in place accepted it: it compiles, it has
+a top-level `theorem solution`, it contains no `sorry`, and its axiom set is clean — all true, and all
+irrelevant to the task. Submitting it would have been a bounty claim backed by an empty proof.
+
+**The gate that was missing:** verify that the artifact proves *the requested proposition*, not merely that it
+is well-formed. Implemented as:
+
+1. read the pinned type with `#check @<decl>` — the type, not the name;
+2. build a probe file containing the submission plus `example : (<pinned type>) := solution`;
+3. require **that** file to compile;
+4. separately require the submission to import `FormalConjectures` — without it the file cannot be talking
+   about the pinned declaration at all.
+
+Retested against the offending file, the strengthened gate now rejects it at step 4.
+
+This is the same failure class as the two parser bugs above: a check that validates form instead of content is
+decoration. It is also why this case is worth publishing: the negative result is only trustworthy because the
+gate was rebuilt and tested against a real false positive.
