@@ -71,3 +71,27 @@ reward is denominated on Sepolia — test currency, not value.
   problem has been claimed.
 - that the proof is worth $100. On Sepolia it is worth nothing in money, and its value here is as a
   reproducible artifact.
+
+## Addendum (2026-10-30, 17:20) — the platform's API is dead from the browser too, and most "open" problems already have proofs
+
+**The API is not merely returning 404 to us.** Its own frontend calls
+`https://api.mathbounty.com/verify-and-sign`; running the same `fetch` from the page context on
+`mathbounty.com` gives `TypeError: Failed to fetch`. The submission backend does not exist, so no proof can be
+filed by anyone through the site.
+
+**And the problems are not as open as the page suggests.** Cross-referencing the `formal-conjectures` files for
+ten of the platform's OPEN problems against their `formal_proof using lean4 at` annotations:
+
+| problem | formal proof already exists | where |
+|---|---|---|
+| #1 | yes | `tadamcz/erdos1` |
+| #3 | yes | `openai/math` |
+| #9 | yes | `linrock/math-proofs` (the one we built) |
+| #10 | yes | `linrock/math-proofs` |
+| #36 | yes | `linrock/math-proofs` |
+| #189 | yes | `plby/lean-proofs` |
+| #97, #137, #145, #188 | no | — |
+
+**Six of ten "open" problems already have a Lean proof somewhere.** If the sample holds, roughly sixty of the
+platform's 102 open problems are an assembly job rather than a mathematics job — which is the real, transferable
+finding of this case, independent of whether the platform ever comes back.
