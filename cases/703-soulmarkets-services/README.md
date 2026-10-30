@@ -101,3 +101,32 @@ curl -s https://api.soul.mds.markets/v1/soul/stats | jq '.total_jobs, .total_pai
 curl -s https://api.soul.mds.markets/v1/soul/receiptdesk2 | jq '.services[] | {slug, price_usd}'
 python env/ops/soul_watch.py --all
 ```
+
+## Correction (2026-10-30, 02:10) — the services execute as an LLM, so five descriptions were rewritten
+
+After listing, I read how a service actually runs. By default a service is executed by a model using the
+seller's `soul.md` as its prompt (`max_tokens: 16000` on the service object). **Real code execution requires
+`sandbox: true`**, which the platform documents ("runs in an isolated container… minimum price $0.50") but does
+not expose as a field on the service object: `PUT /me/services/{slug}` with `{"sandbox": true}` returns 200 and
+the field is absent from the stored service, both before and after.
+
+**Five of the eight descriptions promised work a model cannot do** — "I run it", "you get back every transfer",
+"the reply names the commit it read". That is the exact failure mode this repository exists to avoid: a claim
+stronger than the evidence.
+
+So the descriptions were rewritten to promise only what the execution can deliver:
+
+| service | was | now |
+|---|---|---|
+`reproduce-check` | "I run it and report whether it reproduces" | an analysis of the reproduction **recipe** — the assumptions it needs and the first place a reader would expect divergence — explicitly **not an execution of it** |
+`onchain-reconcile` | "you get back every transfer out of that treasury" | the **exact query to run** (RPC method, block range, topic filter), the fields to read, and the traps that break this kind of query, so the numbers survive a stranger re-running them |
+`repo-claims-audit` | "the reply names the exact commit it read" | a classification of README claims into mechanically checkable / unverifiable-from-the-repo / worded more strongly than the evidence; **does not claim to have run anything** |
+`lean-formalize` | "you get back a Lean 4 file with the statement formalized" | a **statement draft** with imports and explicit hypotheses, plus where such a proof usually stalls; an open problem is stated, not solved |
+`claim-check` | "the command that reproduces the number" | which primary source would settle it, what line to quote, and **what that evidence would not establish** |
+
+The three security reviews (`mcp-tool-review`, `agent-api-review`, `x402-payment-review`) were left as written:
+they promise a reading of code or a schema, which is what a model can do.
+
+**Lesson for the next listing on any platform:** read the execution model before writing the description. A
+price is easy to change; a false promise on a public listing is the one thing this repository has spent 15 cases
+avoiding.
